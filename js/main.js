@@ -45,4 +45,8 @@ function checkStringLength (string, length) {
   return string.length <= length;
 }
 
+// Функция для получения случайного элемента любого массива
+const getRandomArrayElement = (array) =>
+  array[getRandomPositiveInteger(0, array.length - 1)];
+
 
