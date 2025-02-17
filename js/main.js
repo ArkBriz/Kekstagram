@@ -57,4 +57,12 @@ const createComment = () => ({
   name: getRandomArrayElement(NAMES),
 });
 
+// Функция для создания объекта описания фото
+const createPhotoDescription = () => ({
+  id: getRandomPositiveInteger(1, 25),
+  url: `photos/${getRandomPositiveInteger(1, 25)}.jpg`,
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: getRandomPositiveInteger(15, 200),
+  comments: Array.from({length: getRandomPositiveInteger(0, 6)}, createComment),
+});
 
