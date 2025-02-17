@@ -49,4 +49,12 @@ function checkStringLength (string, length) {
 const getRandomArrayElement = (array) =>
   array[getRandomPositiveInteger(0, array.length - 1)];
 
+// Функция для создания объекта комментария
+const createComment = () => ({
+  id: getRandomPositiveInteger(1, 51325),
+  avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
+  message: getRandomArrayElement(COMMENTS),
+  name: getRandomArrayElement(NAMES),
+});
+
 
