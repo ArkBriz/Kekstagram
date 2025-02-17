@@ -66,3 +66,9 @@ const createPhotoDescription = () => ({
   comments: Array.from({length: getRandomPositiveInteger(0, 6)}, createComment),
 });
 
+// Функция для создания массива объектов описаний фото
+const getPhotos = () =>
+  Array.from({length: 25}, createPhotoDescription);
+
+checkStringLength('', 140);
+getPhotos();
