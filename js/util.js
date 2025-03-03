@@ -42,3 +42,5 @@ function getRandomPositiveInteger (a, b = 1) {
 // Функция для получения случайного элемента любого массива
 const getRandomArrayElement = (array) =>
   array[getRandomPositiveInteger(0, array.length - 1)];
+
+export {getRandomArrayElement};

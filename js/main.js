@@ -1,3 +1,5 @@
+import { getRandomArrayElement } from "./util";
+
 // Проверка длины строки комментария
 function checkStringLength (string, length) {
   return string.length <= length;
