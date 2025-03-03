@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger, getRandomArrayElement } from "./util";
+import { getRandomPositiveInteger, getRandomArrayElement } from "./util.js";
 
 const DESCRIPTIONS = [
   'Описание 1',
@@ -31,8 +31,8 @@ const COMMENTS = [
 
 
 // Функция для создания объекта комментария
-const createComment = (index) => ({
-  id: index,
+const createComment = () => ({
+  id: getRandomPositiveInteger(1, 99999),
   avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
   message: getRandomArrayElement(COMMENTS),
   name: getRandomArrayElement(NAMES),
@@ -57,4 +57,4 @@ const getPhotos = () =>
     (_, photoIndex) => createPhotoDescription(photoIndex + 1)
   );
 
-export {getPhotos};
+export { getPhotos };

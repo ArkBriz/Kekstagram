@@ -1,3 +1,3 @@
-import { getPhotos } from "./data";
+import { getPhotos } from "./data.js";
 
 getPhotos();
