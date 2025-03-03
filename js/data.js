@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger } from "./util";
+import { getRandomPositiveInteger, getRandomArrayElement } from "./util";
 
 const DESCRIPTIONS = [
   'Описание 1',
@@ -29,15 +29,6 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-
-// Проверка длины строки комментария
-// function checkStringLength (string, length) {
-//   return string.length <= length;
-// }
-
-// Функция для получения случайного элемента любого массива
-const getRandomArrayElement = (array) =>
-  array[getRandomPositiveInteger(0, array.length - 1)];
 
 // Функция для создания объекта комментария
 const createComment = (index) => ({

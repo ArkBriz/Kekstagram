@@ -10,4 +10,11 @@ function getRandomPositiveInteger (a, b = 1) {
   return Math.floor(result);
 }
 
-export {getRandomPositiveInteger};
+// Функция для получения случайного элемента любого массива
+const getRandomArrayElement = (array) =>
+  array[getRandomPositiveInteger(0, array.length - 1)];
+
+// Проверка длины строки комментария
+const checkStringLength = (string, length) => string.length <= length;
+
+export { getRandomPositiveInteger, getRandomArrayElement, checkStringLength };
