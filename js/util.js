@@ -17,4 +17,8 @@ const getRandomArrayElement = (array) =>
 // Проверка длины строки комментария
 const checkStringLength = (string, length) => string.length <= length;
 
-export { getRandomPositiveInteger, getRandomArrayElement, checkStringLength };
+export {
+  getRandomPositiveInteger,
+  getRandomArrayElement,
+  checkStringLength
+};

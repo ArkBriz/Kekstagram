@@ -1,3 +1,4 @@
 import { getPhotos } from "./data.js";
 
-getPhotos();
+// getPhotos();
+console.log(getPhotos());

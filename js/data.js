@@ -1,4 +1,5 @@
 import { getRandomPositiveInteger, getRandomArrayElement } from "./util.js";
+import { commentId, photoId, photoUrlId } from "./id-generator.js";
 
 const DESCRIPTIONS = [
   'Описание 1',
@@ -32,29 +33,23 @@ const COMMENTS = [
 
 // Функция для создания объекта комментария
 const createComment = () => ({
-  id: getRandomPositiveInteger(1, 99999),
+  id: commentId(),
   avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
   message: getRandomArrayElement(COMMENTS),
   name: getRandomArrayElement(NAMES),
 });
 
 // Функция для создания объекта описания фото
-const createPhotoDescription = (index) => ({
-  id: index,
-  url: `photos/${index}.jpg`,
+const createPhotoDescription = () => ({
+  id: photoId(),
+  url: `photos/${photoUrlId()}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomPositiveInteger(15, 200),
-  comments: Array.from(
-    {length: getRandomPositiveInteger(1, 2)},
-    (_, commentIndex) => createComment(commentIndex + 1)
-  ),
+  comments: Array.from({length: getRandomPositiveInteger(1, 2)}, createComment),
 });
 
 // Функция для создания массива объектов описаний фото
 const getPhotos = () =>
-  Array.from(
-    {length: 25},
-    (_, photoIndex) => createPhotoDescription(photoIndex + 1)
-  );
+  Array.from({length: 25}, createPhotoDescription);
 
 export { getPhotos };
