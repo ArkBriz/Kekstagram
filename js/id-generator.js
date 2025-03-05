@@ -1,5 +1,15 @@
 import { getRandomPositiveInteger } from "./util.js";
 
+// Генератор идентификаторов по порядку
+
+function createIdGenerator () {
+  let createdId = 0;
+
+  return function () {
+    return createdId += 1;
+  };
+}
+
 // Генератор случайных неповторяющихся идентификаторов из диапазона
 
 function createRandomIdGenerator (min, max) {
@@ -22,8 +32,8 @@ function createRandomIdGenerator (min, max) {
   };
 }
 
-const commentId = createRandomIdGenerator(1, 9999);
-const photoId = createRandomIdGenerator(1, 25);
-const photoUrlId = createRandomIdGenerator(1, 25);
+const commentId = createRandomIdGenerator(1, 999);
+const photoId = createIdGenerator();
+const photoUrlId = createIdGenerator();
 
 export { commentId, photoId, photoUrlId };

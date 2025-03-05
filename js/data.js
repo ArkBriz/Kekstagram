@@ -30,12 +30,30 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
+const Ranges = {
+  LIKES_COUNT_FROM: 15,
+  LIKES_COUNT_TO: 200,
+  COMMENTS_COUNT_FROM: 0,
+  COMMENTS_COUNT_TO: 20,
+  PHOTO_DESC_COUNT: 25,
+};
+
+const { LIKES_COUNT_FROM, LIKES_COUNT_TO, COMMENTS_COUNT_FROM, COMMENTS_COUNT_TO, PHOTO_DESC_COUNT } = Ranges;
+
+// Сообщение комментария
+
+const commentMessage = () =>
+    Array.from(
+    {length: getRandomPositiveInteger(1, 2)},
+  () => getRandomArrayElement(COMMENTS)
+  ).join(' ');
+
 
 // Функция для создания объекта комментария
 const createComment = () => ({
   id: commentId(),
   avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
-  message: getRandomArrayElement(COMMENTS),
+  message: commentMessage(),
   name: getRandomArrayElement(NAMES),
 });
 
@@ -44,12 +62,12 @@ const createPhotoDescription = () => ({
   id: photoId(),
   url: `photos/${photoUrlId()}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomPositiveInteger(15, 200),
-  comments: Array.from({length: getRandomPositiveInteger(1, 2)}, createComment),
+  likes: getRandomPositiveInteger(LIKES_COUNT_FROM, LIKES_COUNT_TO),
+  comments: Array.from({length: getRandomPositiveInteger(COMMENTS_COUNT_FROM, COMMENTS_COUNT_TO)}, createComment),
 });
 
 // Функция для создания массива объектов описаний фото
 const getPhotos = () =>
-  Array.from({length: 25}, createPhotoDescription);
+  Array.from({length: PHOTO_DESC_COUNT}, createPhotoDescription);
 
 export { getPhotos };
