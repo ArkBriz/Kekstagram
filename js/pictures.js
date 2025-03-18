@@ -1,7 +1,10 @@
+import { getPhotos } from "./data.js";
+
 const picturesList = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content;
 const pictureTemplate = templatePicture.querySelector('.picture');
 
+// Создание мини-картинки
 const createPicture = function ({ url, likes, comments }) {
   const picture = pictureTemplate.cloneNode(true);
 
@@ -16,6 +19,7 @@ const createPicture = function ({ url, likes, comments }) {
   return picture;
 };
 
+// Функция отрисовки картинок на странице
 const renderPictures = (pictures) => {
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
@@ -26,4 +30,7 @@ const renderPictures = (pictures) => {
   picturesList.append(fragment);
 };
 
-export { renderPictures };
+const pictures = getPhotos();
+renderPictures(pictures);
+
+export { pictures };
