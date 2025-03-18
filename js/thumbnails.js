@@ -15,3 +15,15 @@ const createPicture = function ({ url, likes, comments }) {
 
   return picture;
 };
+
+const renderPictures = (pictures) => {
+  const fragment = document.createDocumentFragment();
+  pictures.forEach((picture) => {
+    const pictureElement = createPicture(picture);
+    fragment.append(pictureElement);
+  });
+
+  picturesList.append(fragment);
+};
+
+export { renderPictures };
