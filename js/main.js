@@ -1,1 +1,1 @@
-import "./pictures.js";
+import "./open-picture.js";
