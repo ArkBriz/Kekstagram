@@ -8,8 +8,8 @@ const createComments = (comments) => {
     (item) => item.remove()
   );
 
-  const commentItem = commentItemTemplate.cloneNode(true);
   comments.forEach(({ avatar, name, message }) => {
+    const commentItem = commentItemTemplate.cloneNode(true);
     commentItem.querySelector('img').src = avatar;
     commentItem.querySelector('img').alt = name;
     commentItem.querySelector('.social__text').textContent = message;
