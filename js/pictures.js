@@ -1,22 +1,23 @@
-import { getPhotos } from "./data.js";
+import { openBigPicture } from "./big-picture.js";
 
 const picturesList = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content;
 const pictureTemplate = templatePicture.querySelector('.picture');
 
 // Создание мини-картинки
-const createPicture = function ({ url, likes, comments }) {
-  const picture = pictureTemplate.cloneNode(true);
+const createPicture = function (data) {
+  const { url, likes, comments } = data;
+  const smallPicture = pictureTemplate.cloneNode(true);
 
-  const pictureImg = picture.querySelector('.picture__img');
-  const likesCount = picture.querySelector('.picture__likes');
-  const commentsCount = picture.querySelector('.picture__comments');
+  smallPicture.querySelector('.picture__img').src = url;
+  smallPicture.querySelector('.picture__likes').textContent = likes;
+  smallPicture.querySelector('.picture__comments').textContent = comments.length;
 
-  pictureImg.src = url;
-  likesCount.textContent = likes;
-  commentsCount.textContent = comments.length;
+  smallPicture.addEventListener('click', () => {
+    openBigPicture(data);
+  });
 
-  return picture;
+  return smallPicture;
 };
 
 // Функция отрисовки картинок на странице
@@ -30,7 +31,4 @@ const renderPictures = (pictures) => {
   picturesList.append(fragment);
 };
 
-const pictures = getPhotos();
-renderPictures(pictures);
-
-export { pictures };
+export { renderPictures };
