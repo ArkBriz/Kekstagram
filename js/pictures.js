@@ -5,7 +5,7 @@ const templatePicture = document.querySelector('#picture').content;
 const pictureTemplate = templatePicture.querySelector('.picture');
 
 // Создание мини-картинки
-const createPicture = function (data) {
+const createPicture = (data) => {
   const { url, likes, comments } = data;
   const smallPicture = pictureTemplate.cloneNode(true);
 
@@ -13,9 +13,7 @@ const createPicture = function (data) {
   smallPicture.querySelector('.picture__likes').textContent = likes;
   smallPicture.querySelector('.picture__comments').textContent = comments.length;
 
-  smallPicture.addEventListener('click', () => {
-    openBigPicture(data);
-  });
+  smallPicture.addEventListener('click', () => openBigPicture(data));
 
   return smallPicture;
 };

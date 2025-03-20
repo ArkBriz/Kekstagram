@@ -1,3 +1,5 @@
+import { isEscKey } from "./util.js";
+
 const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
 const commentsList = document.querySelector('.social__comments');
@@ -32,23 +34,25 @@ const openBigPicture = (data) => {
     bigPicture.classList.remove('hidden');
     body.classList.add('modal-open');
 
+    closeButton.addEventListener('click', closePicture);
+    document.addEventListener('keydown', onBigPictureEscKeydown);
+
     bigPicture.querySelector('.social__comment-count').classList.add('hidden');
     bigPicture.querySelector('.comments-loader').classList.add('hidden');
 };
 
-const closePicture = () => {
-  bigPicture.classList.add('hidden');
-  body.classList.remove('modal-open');
-};
-
-function closeByEsc (evt) {
-  if (evt.key === 'Escape') {
+function onBigPictureEscKeydown (evt) {
+  if (isEscKey(evt)) {
     evt.preventDefault();
     closePicture();
-  };
+  }
 };
 
-closeButton.addEventListener('click', closePicture);
-document.addEventListener('keydown', closeByEsc);
+function closePicture () {
+  bigPicture.classList.add('hidden');
+  body.classList.remove('modal-open');
+
+  removeEventListener('keydown', onBigPictureEscKeydown);
+};
 
 export { openBigPicture };

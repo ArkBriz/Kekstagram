@@ -14,11 +14,19 @@ function getRandomPositiveInteger (a, b = 1) {
 const getRandomArrayElement = (array) =>
   array[getRandomPositiveInteger(0, array.length - 1)];
 
+// Функции проверки нажатой клавиши
+const isEscKey = (evt) => {
+  return evt.key === 'Escape';
+};
+
 // Проверка длины строки комментария
-const checkStringLength = (string, length) => string.length <= length;
+function checkStringLength(string, length) {
+  return string.length <= length;
+}
 
 export {
   getRandomPositiveInteger,
   getRandomArrayElement,
-  checkStringLength
+  checkStringLength,
+  isEscKey
 };
