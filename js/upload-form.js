@@ -59,6 +59,14 @@ const pristine = new Pristine(imgUploadForm, {
   errorTextClass: 'text__error'
 });
 
+const hasValidLength = (string) =>
+  string.length >= MIN_HASHTAG_LENGTH && string.length <= MAX_HASHTAG_LENGTH;
+
+const hasValidSymbols = (string) => VALID_SYMBOLS.test(string);
+
+const isValidTag = (tag) =>
+  hasValidLength(tag) && hasValidSymbols(tag);
+
 const onFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
