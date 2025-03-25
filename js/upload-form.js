@@ -74,6 +74,17 @@ const hasUniqueTags = (tags) => {
   return lowerCaseTags.length === new Set(lowerCaseTags).size;
 };
 
+function validateTags (value) {
+  const tags = value.trim().split(' ');
+  return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
+};
+
+pristine.addValidator(
+  hashtagsField,
+  validateTags,
+  'Поле хэштегов заполнено неверно'
+);
+
 const onFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
