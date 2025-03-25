@@ -69,6 +69,11 @@ const isValidTag = (tag) =>
 
 const hasValidCount = (tags) => tags.length <= MAX_HASHTAGS_COUNT;
 
+const hasUniqueTags = (tags) => {
+  const lowerCaseTags = tags.map((tag) => tag.toLowerCase());
+  return lowerCaseTags.length === new Set(lowerCaseTags).size;
+};
+
 const onFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
