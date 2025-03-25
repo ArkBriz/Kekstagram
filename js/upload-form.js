@@ -67,6 +67,8 @@ const hasValidSymbols = (string) => VALID_SYMBOLS.test(string);
 const isValidTag = (tag) =>
   hasValidLength(tag) && hasValidSymbols(tag);
 
+const hasValidCount = (tags) => tags.length <= MAX_HASHTAGS_COUNT;
+
 const onFormSubmit = (evt) => {
   evt.preventDefault();
   pristine.validate();
