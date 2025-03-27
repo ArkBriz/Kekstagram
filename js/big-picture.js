@@ -67,14 +67,14 @@ const onCommentsLoaderClick = (evt) => {
     return comment.classList.contains('hidden');
   });
 
+  commentsCount.querySelector('.loaded-comments-count').textContent = commentItems.length - leftUnloadedComments.length;
+
   if (leftUnloadedComments.length === 0) {
     evt.target.classList.add('hidden');
   }
 };
 
-const showHiddenComments = () => {
-  commentsLoader.addEventListener('click', onCommentsLoaderClick);
-};
+const showHiddenComments = () => commentsLoader.addEventListener('click', onCommentsLoaderClick);
 
 function onBigPictureEscKeydown (evt) {
   if (isEscKey(evt)) {
@@ -86,6 +86,7 @@ function onBigPictureEscKeydown (evt) {
 function closePicture () {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
+  commentsCount.querySelector('.loaded-comments-count').textContent = COMMENTS_STEP;
 
   removeEventListener('keydown', onBigPictureEscKeydown);
 };
