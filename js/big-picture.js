@@ -12,8 +12,8 @@ const createComments = (comments) => {
 
   comments.forEach(({ avatar, name, message }) => {
     const commentItem = commentItemTemplate.cloneNode(true);
-    commentItem.querySelector('img').src = avatar;
-    commentItem.querySelector('img').alt = name;
+    commentItem.querySelector('.social__picture').src = avatar;
+    commentItem.querySelector('.social__picture').alt = name;
     commentItem.querySelector('.social__text').textContent = message;
     fragment.append(commentItem);
   });
