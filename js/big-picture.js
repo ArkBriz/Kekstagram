@@ -104,4 +104,4 @@ const openBigPicture = (data) => {
     document.addEventListener('keydown', onBigPictureEscKeydown);
 };
 
-export { openBigPicture, showHiddenComments };
+export { openBigPicture };
