@@ -710,6 +710,16 @@
     border-radius: 5px;
   }
 
+  .text-input__error {
+    position: relative;
+    margin-top: -20px;
+
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #fd4d4b;
+    z-index: 100;
+  }
+
 
   /**
    * Кнопка для отправки изображения

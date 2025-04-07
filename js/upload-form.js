@@ -11,7 +11,7 @@ const commentField = document.querySelector('.text__description');
 const MAX_HASHTAGS_COUNT = 5;
 const MIN_HASHTAG_LENGTH = 2;
 const MAX_HASHTAG_LENGTH = 20;
-const VALID_SYMBOLS = /^[#a-zA-Z0-9а-яА-ЯёЁ]{1,20}$/;
+const VALID_SYMBOLS = /^[#a-zA-Z0-9а-яА-ЯёЁ]{1,19}$/;
 
 function openUploadModal () {
   imgUploadForm.querySelector('.img-upload__overlay').classList.remove('hidden');
@@ -54,9 +54,9 @@ const onCancelButtonClick = () => {
 };
 
 const pristine = new Pristine(imgUploadForm, {
-  classTo: 'text',
-  errorTextParent: 'text',
-  errorTextClass: 'text__error'
+  classTo: 'img-upload__input-wrapper',
+  errorTextParent: 'img-upload__input-wrapper',
+  errorTextClass: 'text-input__error'
 });
 
 const hasValidLength = (string) =>
@@ -94,17 +94,14 @@ const getErrorMessage = (value) => {
   for (let i = 0; i < tags.length; i++) {
     if (tags[i][0] !== '#') {
       return 'Хэштег должен начинаться со знака #';
-      break;
     };
 
     if (!VALID_SYMBOLS.test(tags[i])) {
       return 'Хэштег должен состоять только из букв и цифр';
-      break;
     };
 
     if (tags[i].length > MAX_HASHTAG_LENGTH || tags[i].length < 2) {
       return 'Хэштег должен быть от 2 до 20 символов';
-      break;
     }
   }
 };

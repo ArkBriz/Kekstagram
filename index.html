@@ -39,7 +39,7 @@
             </fieldset>
 
             <!-- Форма редактирования изображения -->
-            <div class="img-upload__overlay hidden">
+            <div class="img-upload__overlay">
               <div class="img-upload__wrapper">
                 <div class="img-upload__preview-container">
 
@@ -115,7 +115,9 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <input type="text" class="text__hashtags text-input" name="hashtags" placeholder="#ХэшТег">
+                  <div class="img-upload__input-wrapper">
+                    <input type="text" class="text__hashtags text-input" name="hashtags" placeholder="#ХэшТег">
+                  </div>
                   <textarea class="text__description text-input" name="description" maxlength="140" placeholder="Ваш комментарий..."></textarea>
                 </fieldset>
 
@@ -234,7 +236,7 @@
   </template>
 
   <script src="pristine/pristine.min.js"></script>
-  <script src="https://unpkg.com/nouislider@15.5.0/distribute/nouislider.min.js"></script>
+  <script src="nouislider/nouislider.js"></script>
   <script src="js/main.js" type="module"></script>
 </body>
 </html>

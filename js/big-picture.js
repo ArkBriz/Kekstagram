@@ -74,8 +74,6 @@ const onCommentsLoaderClick = (evt) => {
   }
 };
 
-const showHiddenComments = () => commentsLoader.addEventListener('click', onCommentsLoaderClick);
-
 function onBigPictureEscKeydown (evt) {
   if (isEscKey(evt)) {
     evt.preventDefault();
@@ -96,10 +94,11 @@ const openBigPicture = (data) => {
     commentsCount.classList.remove('hidden');
     commentsLoader.classList.remove('hidden');
     hideComments();
-    showHiddenComments();
+
     bigPicture.classList.remove('hidden');
     body.classList.add('modal-open');
 
+    commentsLoader.addEventListener('click', onCommentsLoaderClick);
     closeButton.addEventListener('click', closePicture);
     document.addEventListener('keydown', onBigPictureEscKeydown);
 };
