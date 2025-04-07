@@ -1,5 +1,6 @@
 import { isEscKey } from "./util.js";
-import "./edit-picture.js";
+import { resetScale } from "./scale.js";
+import "./effects.js";
 
 const body = document.querySelector('body');
 const uploadImgModal = document.querySelector('.img-upload');
@@ -26,6 +27,7 @@ function closeUploadModal () {
   body.classList.remove('modal-open');
 
   imgUploadForm.reset();
+  resetScale();
   pristine.reset();
   // или
   // uploadImgField.value = '';
