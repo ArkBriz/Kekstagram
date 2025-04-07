@@ -1,4 +1,5 @@
 import { isEscKey } from "./util.js";
+import "./edit-picture.js";
 
 const body = document.querySelector('body');
 const uploadImgModal = document.querySelector('.img-upload');
