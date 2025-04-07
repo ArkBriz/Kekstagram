@@ -86,10 +86,11 @@
    height: 18px;
  }
  .noUi-horizontal .noUi-handle {
-   width: 34px;
-   height: 28px;
+   width: 35px;
+   height: 32px;
    right: -17px;
-   top: -6px;
+   top: -8px;
+   border-radius: 50%;
  }
  .noUi-vertical {
    width: 18px;

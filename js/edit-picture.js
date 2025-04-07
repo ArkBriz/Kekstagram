@@ -5,9 +5,18 @@ const scaleControl = scale.querySelector('.scale__control--value');
 const image = document.querySelector('.img-upload__preview img');
 const effectsContainer = document.querySelector('.effects__list');
 const effectButtons = effectsContainer.querySelectorAll('.effects__radio');
+const sliderElement = document.querySelector('.effect-level__slider');
+
+noUiSlider.create(sliderElement, {
+  range: {
+    min: 0,
+    max: 100,
+  },
+  start: 100,
+});
 
 let scaleValue = 100;
-let scaleStyleValue = 1;
+let transformScaleValue = 1;
 
 const EFFECTS = [
   'none',
@@ -24,7 +33,7 @@ smallerScale.addEventListener('click', () => {
   } else {
     scaleValue -= 25;
     scaleControl.value = `${scaleValue}%`;
-    image.style.transform = `scale(${scaleStyleValue -= 0.25})`;
+    image.style.transform = `scale(${transformScaleValue -= 0.25})`;
   }
 });
 
@@ -34,7 +43,7 @@ biggerScale.addEventListener('click', () => {
   } else {
     scaleValue += 25;
     scaleControl.value = `${scaleValue}%`;
-    image.style.transform = `scale(${scaleStyleValue += 0.25})`;
+    image.style.transform = `scale(${transformScaleValue += 0.25})`;
   }
 });
 
