@@ -2,6 +2,7 @@ const scale = document.querySelector('.scale');
 const smallerButton = scale.querySelector('.scale__control--smaller');
 const biggerButton = scale.querySelector('.scale__control--bigger');
 const scaleInput = scale.querySelector('.scale__control--value');
+const image = document.querySelector('.img-upload__preview img');
 
 const SCALE_STEP = 25;
 const MIN_SCALE = 25;
