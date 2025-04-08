@@ -15,14 +15,19 @@ const MIN_HASHTAG_LENGTH = 2;
 const MAX_HASHTAG_LENGTH = 20;
 const VALID_SYMBOLS = /^#[a-zA-Z0-9а-яА-ЯёЁ]{1,19}$/;
 
-function openUploadModal () {
+const pristine = new Pristine(imgUploadForm, {
+  classTo: 'img-upload__input-wrapper',
+  errorTextParent: 'img-upload__input-wrapper',
+  errorTextClass: 'text-input__error'
+});
+
+const openUploadModal = () => {
   imgUploadForm.querySelector('.img-upload__overlay').classList.remove('hidden');
   body.classList.add('modal-open');
-
-  document.addEventListener('keydown', onUploadModalEscKeydown);
+  document.addEventListener('keydown', onEscKeydown);
 };
 
-function closeUploadModal () {
+const closeUploadModal = () => {
   imgUploadForm.querySelector('.img-upload__overlay').classList.add('hidden');
   body.classList.remove('modal-open');
 
@@ -36,33 +41,29 @@ function closeUploadModal () {
   // hashtagsField.value = '';
   // commentField.value = '';
 
-  document.removeEventListener('keydown', onUploadModalEscKeydown);
+  document.removeEventListener('keydown', onEscKeydown);
 };
 
 const isTextFieldFocused = () =>
   document.activeElement === hashtagsField ||
   document.activeElement === commentField;
 
-function onUploadModalEscKeydown (evt) {
+function onEscKeydown (evt) {
   if (isEscKey(evt) && !isTextFieldFocused()) {
     evt.preventDefault();
     closeUploadModal();
   }
 };
 
-const onUploadInputChange = () => {
-  openUploadModal();
-};
-
 const onCancelButtonClick = () => {
   closeUploadModal();
 };
 
-const pristine = new Pristine(imgUploadForm, {
-  classTo: 'img-upload__input-wrapper',
-  errorTextParent: 'img-upload__input-wrapper',
-  errorTextClass: 'text-input__error'
-});
+const onUploadInputChange = () => {
+  openUploadModal();
+};
+
+const startsWithHash = (string) => string[0] === '#';
 
 const hasValidLength = (string) =>
   string.length >= MIN_HASHTAG_LENGTH && string.length <= MAX_HASHTAG_LENGTH;
@@ -70,7 +71,7 @@ const hasValidLength = (string) =>
 const hasValidSymbols = (string) => VALID_SYMBOLS.test(string);
 
 const isValidTag = (tag) =>
-  hasValidLength(tag) && hasValidSymbols(tag);
+  startsWithHash(tag) && hasValidLength(tag) && hasValidSymbols(tag);
 
 const hasValidCount = (tags) => tags.length <= MAX_HASHTAGS_COUNT;
 
@@ -80,12 +81,12 @@ const hasUniqueTags = (tags) => {
 };
 
 function validateTags (value) {
-  const tags = value.trim().split(' ');
+  const tags = value.trim().split(' ').filter((tag) => tag.trim().length);
   return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
 };
 
 const getErrorMessage = (value) => {
-  const tags = value.trim().split(' ');
+  const tags = value.trim().split(' ').filter((tag) => tag.trim().length);
   const lowerCaseTags = tags.map((tag) => tag.toLowerCase());
 
   if (lowerCaseTags.length !== new Set(lowerCaseTags).size) {
