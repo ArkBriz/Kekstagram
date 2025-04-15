@@ -19,14 +19,27 @@ const isEscKey = (evt) => {
   return evt.key === 'Escape';
 };
 
-// Проверка длины строки комментария
-function checkStringLength(string, length) {
-  return string.length <= length;
-}
+// Сообщение об ошибке при получении данных с сервера
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.textContent = message;
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.top = '10px';
+  alertContainer.style.left = 0;
+  alertContainer.style.right = 0;
+  alertContainer.style.padding = '10px';
+  alertContainer.style.zIndex = 100;
+  alertContainer.style.color = 'white';
+  alertContainer.style.fontSize = '18px';
+  alertContainer.style.backgroundColor = 'red';
+  alertContainer.style.textAlign = 'center';
+
+  document.body.append(alertContainer);
+};
 
 export {
   getRandomPositiveInteger,
   getRandomArrayElement,
-  checkStringLength,
+  showAlert,
   isEscKey
 };
