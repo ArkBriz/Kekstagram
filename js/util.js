@@ -1,3 +1,5 @@
+const ALERT_SHOW_TIME = 10000;
+
 // Генератор случайных чисел
 function getRandomPositiveInteger (a, b = 1) {
   if (a === undefined) {
@@ -35,6 +37,10 @@ const showAlert = (message) => {
   alertContainer.style.textAlign = 'center';
 
   document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
 };
 
 export {
