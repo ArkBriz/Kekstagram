@@ -1,3 +1,5 @@
+import { renderPictures } from './pictures.js';
+
 const PICTURES_COUNT = 10;
 const Filter = [
   DEFAULT = 'filter-default',
@@ -31,3 +33,22 @@ const sortPictures = () => {
       return [...pictures];
   }
 };
+
+filtersElement.addEventListener('click', (evt) => {
+  if (!evt.target.contains('img-filters__button')) {
+    return;
+  };
+
+  const clickedButton = evt.target;
+  if (clickedButton.id === currentFilter) {
+    return;
+  };
+
+  filtersElement
+    .querySelector('.img-filters__button--active')
+    .classList.remove('img-filters__button--active');
+
+  clickedButton.classList.add('img-filters__button--active');
+  currentFilter = clickedButton.id;
+  renderPictures(sortPictures());
+});

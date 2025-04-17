@@ -20,6 +20,8 @@ const createPicture = (data) => {
 
 // Функция отрисовки картинок на странице
 const renderPictures = (pictures) => {
+  picturesList.querySelectorAll('.picture').forEach((elem) => elem.remove());
+
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
     const pictureElement = createPicture(picture);

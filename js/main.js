@@ -1,5 +1,5 @@
 // import { getPhotos } from "./data.js"; -- mock data;
-import { getData, sendData } from './api.js';
+import { getData } from './api.js';
 import { renderPictures } from './pictures.js';
 import { setOnFormSubmit, closeUploadModal } from './upload-form.js';
 import { showAlert } from "./util.js";
