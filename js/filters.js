@@ -1,11 +1,11 @@
 import { renderPictures } from './pictures.js';
 
-const PICTURES_COUNT = 10;
-const Filter = [
-  DEFAULT = 'filter-default',
-  RANDOM = 'filter-random',
-  DISCUSSED = 'filter-discussed',
-];
+const PICTURES_COUNT = 12;
+const Filter = {
+  DEFAULT: 'filter-default',
+  RANDOM: 'filter-random',
+  DISCUSSED: 'filter-discussed',
+};
 
 const filtersElement = document.querySelector('.img-filters');
 
@@ -35,7 +35,7 @@ const sortPictures = () => {
 };
 
 filtersElement.addEventListener('click', (evt) => {
-  if (!evt.target.contains('img-filters__button')) {
+  if (!evt.target.classList.contains('img-filters__button')) {
     return;
   };
 
@@ -52,3 +52,5 @@ filtersElement.addEventListener('click', (evt) => {
   currentFilter = clickedButton.id;
   renderPictures(sortPictures());
 });
+
+export { turnFilterOn, sortPictures };

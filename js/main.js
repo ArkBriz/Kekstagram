@@ -4,6 +4,12 @@ import { renderPictures } from './pictures.js';
 import { setOnFormSubmit, closeUploadModal } from './upload-form.js';
 import { showAlert } from "./util.js";
 import { showSuccessMessage, showErrorMessage } from './success-messages.js';
+import { turnFilterOn, sortPictures } from './filters.js';
+
+const onGetDataSuccess = (data) => {
+  turnFilterOn(data);
+  renderPictures(sortPictures());
+}
 
 const onSendDataSuccess = () => {
   closeUploadModal();
@@ -17,4 +23,4 @@ const onSendDataError = () => {
 
 setOnFormSubmit(onSendDataSuccess, onSendDataError);
 
-getData(renderPictures, showAlert);
+getData(onGetDataSuccess, showAlert);
