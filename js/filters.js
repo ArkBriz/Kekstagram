@@ -1,4 +1,5 @@
 import { renderPictures } from './pictures.js';
+import { debounce } from './util.js';
 
 const PICTURES_COUNT = 12;
 const Filter = {
@@ -8,6 +9,7 @@ const Filter = {
 };
 
 const filtersElement = document.querySelector('.img-filters');
+const debouncedRenderPictures = debounce(renderPictures);
 
 let pictures = [];
 let currentFilter = '';
@@ -50,7 +52,7 @@ filtersElement.addEventListener('click', (evt) => {
 
   clickedButton.classList.add('img-filters__button--active');
   currentFilter = clickedButton.id;
-  renderPictures(sortPictures());
+  debouncedRenderPictures(sortPictures());
 });
 
 export { turnFilterOn, sortPictures };
