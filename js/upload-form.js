@@ -12,10 +12,14 @@ const closeButton = uploadImgModal.querySelector('#upload-cancel');
 const commentField = document.querySelector('.text__description');
 const submitButton = imgUploadForm.querySelector('.img-upload__submit');
 
+const preview = document.querySelector('.img-upload__preview img');
+const effectsPreviews = document.querySelectorAll('.effects__preview');
+
 const MAX_HASHTAGS_COUNT = 5;
 const MIN_HASHTAG_LENGTH = 2;
 const MAX_HASHTAG_LENGTH = 20;
 const VALID_SYMBOLS = /^#[a-zA-Z0-9а-яА-ЯёЁ]{1,19}$/;
+const FILE_TYPES = ['png', 'jpg', 'jpeg'];
 
 const pristine = new Pristine(imgUploadForm, {
   classTo: 'img-upload__input-wrapper',
@@ -61,7 +65,19 @@ const onCancelButtonClick = () => {
   closeUploadModal();
 };
 
+const isValidType = (file) => {
+  const fileName = file.name.toLowerCase();
+  return FILE_TYPES.some((item) => fileName.endsWith(item));
+};
+
 const onUploadInputChange = () => {
+  const file = uploadImgField.files[0];
+
+  if (file && isValidType(file)) {
+    preview.src = URL.createObjectURL(file);
+    effectsPreviews.forEach((effect) => effect.style.backgroundImage = `url(${preview.src})`);
+  }
+
   openUploadModal();
 };
 
